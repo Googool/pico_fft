@@ -1,9 +1,7 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="219.000000pt" height="188.000000pt" viewBox="0 0 219.000000 188.000000"
- preserveAspectRatio="xMidYMid meet">
+<svg version="1.1" viewBox="0 0 219.000000 188.000000" width="1280" height="1280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
    <style>
     path {
       fill: #000000;

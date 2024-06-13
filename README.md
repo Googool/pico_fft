@@ -1,4 +1,4 @@
-# Library with *FFT* functions for the Pico <img align="right" width="100" height="100" src="images\logo.svg">
+# Library with *FFT* functions for the Pico <img align="right" width="100" height="100" src="images\icon.svg">
 
 *Some text*.
 
