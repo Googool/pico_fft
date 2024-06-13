@@ -26,8 +26,4 @@ target_include_directories(${PROJECT_NAME} INTERFACE
 # Link the necessary libraries
 target_link_libraries(${PROJECT_NAME} INTERFACE
     pico_stdlib
-    hardware_pio
-    hardware_dma
-    hardware_adc
-    hardware_irq
 )

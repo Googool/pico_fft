@@ -1,9 +1,15 @@
 # Library with *FFT* functions for the Pico <img align="right" width="100" height="100" src="images\icon.svg">
 
-*Some text*.
+*I will have to find another icon for this library*.
 
 > [!CAUTION]
-> Library is still in development.
+> Library is still in development and does not work!
+
+## Quickstart 🚀
+
+![Raspberry Pi Pico pinout](images/pico-pinout.png)
+
+*Something about the connections between the signal and Raspberry Pi Pico*. [WIP]
 
 ## Examples
 
