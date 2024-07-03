@@ -39,7 +39,7 @@ void fft_init(fft_t* fft, uint adc_pin, size_t fft_size, float sample_rate) {
         fft->adc_buffer,    // dst
         &adc_hw->fifo,      // src
         fft_size,           // transfer count
-        true                // start immediately
+        false               // Do not start immediately
     );
 
     float f_max = sample_rate / 2;
@@ -57,6 +57,7 @@ void fft_deinit(fft_t* fft) {
 }
 
 void fft_sample(fft_t* fft) {
+    printf("Starting sampling...\n"); // Debug statement
     adc_fifo_drain();
     adc_run(false);
 
@@ -64,6 +65,7 @@ void fft_sample(fft_t* fft) {
     adc_run(true);
     dma_channel_wait_for_finish_blocking(fft->dma_chan);
     adc_run(false);
+    printf("Finished sampling.\n"); // Debug statement
 }
 
 void fft_compute(fft_t* fft) {
@@ -78,4 +80,5 @@ void fft_compute(fft_t* fft) {
     }
 
     kiss_fftr(fft->cfg, fft_in, fft->fft_out);
+    printf("FFT computation done.\n"); // Debug statement
 }
