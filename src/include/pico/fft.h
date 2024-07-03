@@ -6,22 +6,25 @@
 #include "hardware/adc.h"
 #include "hardware/dma.h"
 
-#define NSAMP 512
+#include <stdio.h>
+#include <math.h>
+
+
+#define CLOCK_DIV 960
+#define FSAMP 50000
+#define CAPTURE_CHANNEL 0
+#define LED_PIN 25
+#define NSAMP 1000
 
 typedef struct {
-    uint adc_pin;
-    size_t fft_size;
-    int dma_chan;
-    kiss_fft_cpx* fft_out;
-    uint8_t* adc_buffer;
-    kiss_fftr_cfg cfg;
-    float* freqs;
-} fft_t;
+    const char *name;
+    int freq_min;
+    int freq_max;
+    int count;
+} frequency_bin_t;
 
-void fft_init(fft_t* fft, uint adc_pin, size_t fft_size, float sample_rate);
-void fft_deinit(fft_t* fft);
-void fft_sample(fft_t* fft);
-void fft_compute(fft_t* fft);
-void fft_clear(fft_t* fft);
+void adc_fft_setup();
+void adc_fft_sample(uint8_t *capture_buf);
+float adc_fft_process(uint8_t *capture_buf);
 
-#endif // FFT_H
+#endif /* FFT_H */
