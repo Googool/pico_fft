@@ -70,19 +70,10 @@ void fft_sample(fft_t* fft) {
 
 void fft_compute(fft_t* fft) {
     kiss_fft_scalar fft_in[NSAMP]; // kiss_fft_scalar is a float
-
-    printf("Starting FFT computation...\n"); // Debug statement
-
-    // Clear the fft_in buffer to ensure no leftover data
-    for (size_t i = 0; i < fft->fft_size; i++) {
-        fft_in[i] = 0;
-    }
-
     uint64_t sum = 0;
     for (size_t i = 0; i < fft->fft_size; i++) {
         sum += fft->adc_buffer[i];
     }
-
     float avg = (float)sum / fft->fft_size;
     for (size_t i = 0; i < fft->fft_size; i++) {
         fft_in[i] = (float)fft->adc_buffer[i] - avg;
