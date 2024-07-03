@@ -1,4 +1,4 @@
-# Library with *FFT* functions for the Pico <img align="right" width="50" height="50" src="images\icon.svg">
+# Library with *FFT* functions for the Pico <img align="right" width="100" height="100" src="images\file.png">
 
 A lightweight and efficient FFT (Fast Fourier Transform) library for the Raspberry Pi Pico, based on the [KISS FFT](https://github.com/mborgerding/kissfft) library by Mark Borgerding.
 
