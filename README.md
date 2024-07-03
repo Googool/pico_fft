@@ -1,9 +1,11 @@
 # Library with *FFT* functions for the Pico <img align="right" width="100" height="100" src="images\logo.svg">
 
-*Some text*.
+This library is a wrapper of the [kissfft library](https://github.com/mborgerding/kissfft) from [mborerding](https://github.com/mborgerding) for the Raspberry Pi Pico.
 
 > [!CAUTION]
-> Library is still in development.
+> Library is still in development and has not been tested yet!
+
+## Quickstart 🚀
 
 ## Examples
 

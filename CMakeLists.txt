@@ -15,7 +15,7 @@ add_library(${PROJECT_NAME} INTERFACE)
 
 # Specify the source files for the library
 target_sources(${PROJECT_NAME} INTERFACE
-    ${CMAKE_CURRENT_LIST_DIR}/src/fft.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/fft.c
 )
 
 # Specify the include directories for the library
@@ -26,8 +26,7 @@ target_include_directories(${PROJECT_NAME} INTERFACE
 # Link the necessary libraries
 target_link_libraries(${PROJECT_NAME} INTERFACE
     pico_stdlib
-    hardware_pio
-    hardware_dma
     hardware_adc
-    hardware_irq
+    hardware_dma
+    kiss_fttr
 )
