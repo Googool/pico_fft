@@ -1,4 +1,4 @@
-#include "pico/fft.h"
+#include "fft.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -9,7 +9,7 @@ void fft_init(fft_t* fft, uint adc_pin, size_t fft_size, float sample_rate) {
     fft->dma_chan = -1;
     fft->fft_out = (kiss_fft_cpx*)malloc(sizeof(kiss_fft_cpx) * fft_size);
     fft->adc_buffer = (uint8_t*)malloc(sizeof(uint8_t) * fft_size);
-    fft->cfg = kiss_fftr_alloc(fft_size, 0, NULL, NULL);
+    fft->cfg = kiss_fftr_alloc(fft_size, 0, NULL, NULL);  // Ensure this function is called correctly
     fft->freqs = (float*)malloc(sizeof(float) * fft_size);
 
     adc_init();
@@ -50,7 +50,7 @@ void fft_init(fft_t* fft, uint adc_pin, size_t fft_size, float sample_rate) {
 }
 
 void fft_deinit(fft_t* fft) {
-    if (fft->cfg) free(fft->cfg);
+    if (fft->cfg) kiss_fftr_free(fft->cfg);  // Ensure the correct free function is used
     if (fft->fft_out) free(fft->fft_out);
     if (fft->adc_buffer) free(fft->adc_buffer);
     if (fft->freqs) free(fft->freqs);
@@ -77,5 +77,5 @@ void fft_compute(fft_t* fft) {
         fft_in[i] = (float)fft->adc_buffer[i] - avg;
     }
 
-    kiss_fftr(fft->cfg, fft_in, fft->fft_out);
+    kiss_fftr(fft->cfg, fft_in, fft->fft_out);  // Ensure the correct FFT function is called
 }
