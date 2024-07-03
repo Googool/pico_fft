@@ -1,15 +1,15 @@
-# Library with *FFT* functions for the Pico <img align="right" width="100" height="100" src="images\icon.svg">
+# Library with *FFT* functions for the Pico <img align="right" width="50" height="50" src="images\icon.svg">
 
-The pico_fft library provides an easy-to-use interface for performing Fast Fourier Transforms (FFT) on the Raspberry Pi Pico using the [kissfft](https://github.com/mborgerding/kissfft) library. This project aims to facilitate signal processing tasks on the Raspberry Pi Pico.
+A lightweight and efficient FFT (Fast Fourier Transform) library for the Raspberry Pi Pico, based on the [KISS FFT](https://github.com/mborgerding/kissfft) library by Mark Borgerding.
 
 > [!CAUTION]
-> Library is still in development and has not been tested yet!
+> This library is still in an experimental phase. Both [examples](https://github.com/Googool/pico_fft/tree/main/examples) have been tested and are working as intended. Code comments and documentation will be included by release 1.0.0.
 
 ## Quickstart 🚀
 
 ![Raspberry Pi Pico pinout](images/pico-pinout.png)
 
-*Something about the connections between the signal and Raspberry Pi Pico*. [WIP]
+*Instructions for connecting the signal to the Raspberry Pi Pico will be provided here by release 1.0.0.*.
 
 ## Examples
 
