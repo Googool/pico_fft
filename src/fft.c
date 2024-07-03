@@ -1,5 +1,4 @@
 #include "pico/fft.h"
-<<<<<<< HEAD
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -65,8 +64,6 @@ void fft_print(const fft_t* fft) {
     printf("Frequency bin %zu: %f\n", i, magnitude);
   }
 }
-=======
-#include <math.h>
 
 #define PI 3.14159265358979323846
 
@@ -108,4 +105,3 @@ void fft(float *real, float *imag, uint16_t n) {
 
   fft_rec(real, imag, n, 1);
 }
->>>>>>> 6eb4603840bd719395db3059dfcb735ff3d6ca45
