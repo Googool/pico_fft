@@ -7,10 +7,10 @@ void fft_init(fft_t* fft, uint adc_pin, size_t fft_size, float sample_rate) {
     fft->adc_pin = adc_pin;
     fft->fft_size = fft_size;
     fft->dma_chan = -1;
-    fft->fft_out = (kiss_fft_cpx*)malloc(sizeof(kiss_fft_cpx) * fft_size);
+    fft->fft_out = (kiss_fft_cpx*)malloc(sizeof(kiss_fft_cpx) * fft_size / 2); // Allocate only half for output
     fft->adc_buffer = (uint8_t*)malloc(sizeof(uint8_t) * fft_size);
     fft->cfg = kiss_fftr_alloc(fft_size, 0, NULL, NULL);
-    fft->freqs = (float*)malloc(sizeof(float) * fft_size);
+    fft->freqs = (float*)malloc(sizeof(float) * fft_size / 2); // Allocate only half for frequencies
 
     adc_init();
     adc_gpio_init(adc_pin);
@@ -42,9 +42,9 @@ void fft_init(fft_t* fft, uint adc_pin, size_t fft_size, float sample_rate) {
         true                // start immediately
     );
 
-    float f_max = sample_rate;
-    float f_res = f_max / fft_size;
-    for (size_t i = 0; i < fft_size; i++) {
+    float f_max = sample_rate / 2;
+    float f_res = f_max / (fft_size / 2);
+    for (size_t i = 0; i < fft_size / 2; i++) {
         fft->freqs[i] = f_res * i;
     }
 }

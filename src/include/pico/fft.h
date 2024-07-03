@@ -14,7 +14,7 @@ typedef struct {
     int dma_chan;
     kiss_fft_cpx* fft_out;
     uint8_t* adc_buffer;
-    kiss_fftr_cfg cfg;  // Ensure this type is defined
+    kiss_fftr_cfg cfg;
     float* freqs;
 } fft_t;
 
