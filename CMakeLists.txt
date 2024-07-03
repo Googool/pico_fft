@@ -26,10 +26,7 @@ target_include_directories(${PROJECT_NAME} INTERFACE
 # Link the necessary libraries
 target_link_libraries(${PROJECT_NAME} INTERFACE
     pico_stdlib
-<<<<<<< HEAD
     hardware_adc
     hardware_dma
     kiss_fttr
-=======
->>>>>>> 6eb4603840bd719395db3059dfcb735ff3d6ca45
 )
