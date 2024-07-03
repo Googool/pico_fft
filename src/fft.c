@@ -80,10 +80,6 @@ void fft_compute(fft_t* fft) {
 }
 
 void fft_clear(fft_t* fft) {
-    free(fft->fft_out);
-    free(fft->adc_buffer);
-    free(fft->freqs);
-    fft->fft_out = (kiss_fft_cpx*)malloc(sizeof(kiss_fft_cpx) * fft->fft_size / 2);
-    fft->adc_buffer = (uint8_t*)malloc(sizeof(uint8_t) * fft->fft_size);
-    fft->freqs = (float*)malloc(sizeof(float) * fft->fft_size / 2);
+    memset(fft->adc_buffer, 0, sizeof(uint8_t) * fft->fft_size);
+    memset(fft->fft_out, 0, sizeof(kiss_fft_cpx) * fft->fft_size / 2);
 }
