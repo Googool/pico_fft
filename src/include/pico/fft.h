@@ -6,7 +6,7 @@
 #include "hardware/adc.h"
 #include "hardware/dma.h"
 
-#define NSAMP 1024
+#define NSAMP 512
 
 typedef struct {
     uint adc_pin;

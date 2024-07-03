@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 void fft_init(fft_t* fft, uint adc_pin, size_t fft_size, float sample_rate) {
     fft->adc_pin = adc_pin;
@@ -57,12 +58,15 @@ void fft_deinit(fft_t* fft) {
 }
 
 void fft_sample(fft_t* fft) {
+    printf("Starting sampling...\n"); // Debug statement
     adc_fifo_drain();
     adc_run(false);
+
     dma_channel_set_read_addr(fft->dma_chan, &adc_hw->fifo, true);
     adc_run(true);
     dma_channel_wait_for_finish_blocking(fft->dma_chan);
     adc_run(false);
+    printf("Finished sampling.\n"); // Debug statement
 }
 
 void fft_compute(fft_t* fft) {
@@ -77,6 +81,7 @@ void fft_compute(fft_t* fft) {
     }
 
     kiss_fftr(fft->cfg, fft_in, fft->fft_out);
+    printf("FFT computation done.\n"); // Debug statement
 }
 
 void fft_clear(fft_t* fft) {
