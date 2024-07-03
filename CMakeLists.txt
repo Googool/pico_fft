@@ -16,6 +16,8 @@ add_library(${PROJECT_NAME} INTERFACE)
 # Specify the source files for the library
 target_sources(${PROJECT_NAME} INTERFACE
     ${CMAKE_CURRENT_LIST_DIR}/src/fft.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/kiss_fft.c
+    ${CMAKE_CURRENT_LIST_DIR}/src/kiss_fftr.c
 )
 
 # Specify the include directories for the library
