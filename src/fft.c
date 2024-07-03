@@ -79,10 +79,3 @@ void fft_compute(fft_t* fft) {
 
     kiss_fftr(fft->cfg, fft_in, fft->fft_out);
 }
-
-void fft_print(const fft_t* fft) {
-    for (size_t i = 0; i < fft->fft_size / 2; ++i) {
-        float magnitude = sqrt(fft->fft_out[i].r * fft->fft_out[i].r + fft->fft_out[i].i * fft->fft_out[i].i);
-        printf("Frequency bin %zu: %f Hz, Amplitude: %f\n", i, fft->freqs[i], magnitude);
-    }
-}

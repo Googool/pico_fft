@@ -2,9 +2,9 @@
 #define FFT_H
 
 #include "pico/stdlib.h"
+#include "pico/kiss_fftr.h"
 #include "hardware/adc.h"
 #include "hardware/dma.h"
-#include "kiss_fftr.h"
 
 #define NSAMP 1024
 
@@ -22,6 +22,5 @@ void fft_init(fft_t* fft, uint adc_pin, size_t fft_size, float sample_rate);
 void fft_deinit(fft_t* fft);
 void fft_sample(fft_t* fft);
 void fft_compute(fft_t* fft);
-void fft_print(const fft_t* fft);
 
 #endif // FFT_H
