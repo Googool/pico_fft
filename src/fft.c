@@ -4,11 +4,8 @@ static dma_channel_config cfg;
 static uint dma_chan;
 static float freqs[NSAMP];
 
-void adc_fft_setup() {
+void fft_setup() {
     stdio_init_all();
-
-    gpio_init(LED_PIN);
-    gpio_set_dir(LED_PIN, GPIO_OUT);
 
     adc_gpio_init(26 + CAPTURE_CHANNEL);
 
@@ -46,7 +43,7 @@ void adc_fft_setup() {
     }
 }
 
-void adc_fft_sample(uint8_t *capture_buf) {
+void fft_sample(uint8_t *capture_buf) {
     adc_fifo_drain();
     adc_run(false);
 
@@ -57,13 +54,11 @@ void adc_fft_sample(uint8_t *capture_buf) {
                           true            // start immediately
     );
 
-    gpio_put(LED_PIN, 1);
     adc_run(true);
     dma_channel_wait_for_finish_blocking(dma_chan);
-    gpio_put(LED_PIN, 0);
 }
 
-float adc_fft_process(uint8_t *capture_buf) {
+void fft_process(uint8_t *capture_buf, frequency_bin_t *bins, int bin_count) {
     kiss_fft_scalar fft_in[NSAMP];
     kiss_fft_cpx fft_out[NSAMP];
     kiss_fftr_cfg cfg = kiss_fftr_alloc(NSAMP, false, 0, 0);
@@ -81,20 +76,28 @@ float adc_fft_process(uint8_t *capture_buf) {
     // Compute fast Fourier transform
     kiss_fftr(cfg, fft_in, fft_out);
 
-    // Compute power and calculate max freq component
-    float max_power = 0;
-    int max_idx = 0;
-    // Any frequency bin over NSAMP/2 is aliased (Nyquist sampling theorem)
+    // Reset bin amplitudes
+    for (int i = 0; i < bin_count; i++) {
+        bins[i].amplitude = 0;
+    }
+
+    // Compute power and distribute into bins
     for (int i = 0; i < NSAMP / 2; i++) {
         float power = fft_out[i].r * fft_out[i].r + fft_out[i].i * fft_out[i].i;
-        if (power > max_power) {
-            max_power = power;
-            max_idx = i;
+        float freq = freqs[i];
+
+        for (int j = 0; j < bin_count; j++) {
+            if (freq >= bins[j].freq_min && freq <= bins[j].freq_max) {
+                bins[j].amplitude += power;
+                break;
+            }
         }
     }
 
-    float max_freq = freqs[max_idx];
-    kiss_fft_free(cfg);
+    // Normalize amplitudes and take the square root to get the actual amplitude values
+    for (int i = 0; i < bin_count; i++) {
+        bins[i].amplitude = sqrtf(bins[i].amplitude);
+    }
 
-    return max_freq;
+    kiss_fft_free(cfg);
 }

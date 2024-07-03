@@ -9,7 +9,6 @@
 #include <stdio.h>
 #include <math.h>
 
-
 #define CLOCK_DIV 960
 #define FSAMP 50000
 #define CAPTURE_CHANNEL 0
@@ -20,11 +19,11 @@ typedef struct {
     const char *name;
     int freq_min;
     int freq_max;
-    int count;
+    float amplitude;
 } frequency_bin_t;
 
-void adc_fft_setup();
-void adc_fft_sample(uint8_t *capture_buf);
-float adc_fft_process(uint8_t *capture_buf);
+void fft_setup();
+void fft_sample(uint8_t *capture_buf);
+void fft_process(uint8_t *capture_buf, frequency_bin_t *bins, int bin_count);
 
 #endif /* FFT_H */
