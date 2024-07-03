@@ -22,5 +22,6 @@ void fft_init(fft_t* fft, uint adc_pin, size_t fft_size, float sample_rate);
 void fft_deinit(fft_t* fft);
 void fft_sample(fft_t* fft);
 void fft_compute(fft_t* fft);
+void fft_clear(fft_t* fft);
 
 #endif // FFT_H

@@ -82,3 +82,12 @@ void fft_compute(fft_t* fft) {
     kiss_fftr(fft->cfg, fft_in, fft->fft_out);
     printf("FFT computation done.\n"); // Debug statement
 }
+
+void fft_clear(fft_t* fft) {
+    free(fft->fft_out);
+    free(fft->adc_buffer);
+    free(fft->freqs);
+    fft->fft_out = (kiss_fft_cpx*)malloc(sizeof(kiss_fft_cpx) * fft->fft_size / 2);
+    fft->adc_buffer = (uint8_t*)malloc(sizeof(uint8_t) * fft->fft_size);
+    fft->freqs = (float*)malloc(sizeof(float) * fft->fft_size / 2);
+}
