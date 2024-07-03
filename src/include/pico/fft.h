@@ -2,9 +2,9 @@
 #define FFT_H
 
 #include "pico/stdlib.h"
-#include "pico/_kiss_fft_guts.h"
 #include "hardware/adc.h"
 #include "hardware/dma.h"
+#include "kiss_fftr.h"
 
 #define NSAMP 1024
 
