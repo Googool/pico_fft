@@ -28,5 +28,4 @@ target_link_libraries(${PROJECT_NAME} INTERFACE
     pico_stdlib
     hardware_adc
     hardware_dma
-    kiss_fttr
 )
