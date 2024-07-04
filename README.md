@@ -3,7 +3,7 @@
 A lightweight and efficient wrapper for the [KISS FFT](https://github.com/mborgerding/kissfft) library, designed specifically for the Raspberry Pi Pico. It simplifies the implementation of Fast Fourier Transform (FFT) operations on the Pico, making it easier to perform frequency domain analysis and signal processing tasks.
 
 > [!NOTE]
-> This library is still in an experimental phase but includes basic documentation explaining its usage further down. Both of the [examples](https://github.com/Googool/pico_fft/tree/main/examples) has been tested and are working as intended.
+> This library is still in an experimental phase but includes basic documentation explaining its usage further down. All three of the [examples](https://github.com/Googool/pico_fft/tree/main/examples) has been tested and are working as intended.
 
 ## Quickstart 🚀
 
