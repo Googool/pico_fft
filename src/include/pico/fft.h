@@ -9,10 +9,9 @@
 #include <stdio.h>
 #include <math.h>
 
-#define CLOCK_DIV 960
-#define FSAMP 50000
+#define CLOCK_DIV 1088
+#define FSAMP 44100
 #define CAPTURE_CHANNEL 0
-#define LED_PIN 25
 #define NSAMP 1000
 
 typedef struct {
