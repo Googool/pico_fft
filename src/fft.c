@@ -12,14 +12,8 @@ static void compute_bin_amplitudes(kiss_fft_cpx *fft_out, frequency_bin_t *bins,
 
 void fft_setup() {
   stdio_init_all();
-
   adc_gpio_init(26 + CAPTURE_CHANNEL);
-
-  if (!adc_init()) {
-    fprintf(stderr, "Failed to initialize ADC\n");
-    return;
-  }
-
+  adc_init();
   adc_select_input(CAPTURE_CHANNEL);
   adc_fifo_setup(
     true,  // Write each completed conversion to the sample FIFO
