@@ -1,9 +1,9 @@
 # Library with *FFT* functions for the Pico <img align="right" width="100" height="100" src="images\icon.svg">
 
-A lightweight and efficient FFT (Fast Fourier Transform) library for the Raspberry Pi Pico, based on the [KISS FFT](https://github.com/mborgerding/kissfft) library by Mark Borgerding.
+A lightweight and efficient wrapper for the [KISS FFT](https://github.com/mborgerding/kissfft) library, designed specifically for the Raspberry Pi Pico. It simplifies the implementation of Fast Fourier Transform (FFT) operations on the Pico, making it easier to perform frequency domain analysis and signal processing tasks.
 
 > [!NOTE]
-> This library is still in an experimental phase but includes basic documentation explaining its usage further down. Both of the [examples](https://github.com/Googool/pico_fft/tree/main/examples) has been tested and are working as intended. Improved error handling and refactoring will be done by the release 1.0.0.
+> This library is still in an experimental phase but includes basic documentation explaining its usage further down. Both of the [examples](https://github.com/Googool/pico_fft/tree/main/examples) has been tested and are working as intended.
 
 ## Quickstart 🚀
 
@@ -136,7 +136,7 @@ int main() {
 
 - **Define `BIN_COUNT`**: Set the number of frequency bins you want to use.
 
-- **Create frequency bins**: Define an array of `frequency_bim_t` structures, each representing a frequency range (in Hz) and an initial amplitude of 0.
+- **Create frequency bins**: Define an array of `frequency_bin_t` structures, each representing a frequency range (in Hz) and an initial amplitude of 0.
 
 - **Initialize and use**: In the main loop, capture the analog samples, process them using FFT, and then print the amplitude of each frequency bin.
 
